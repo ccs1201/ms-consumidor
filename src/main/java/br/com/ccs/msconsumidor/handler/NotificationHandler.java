@@ -1,6 +1,5 @@
 package br.com.ccs.msconsumidor.handler;
 
-import br.com.ccs.msconsumidor.constants.MsConsumidorConstants;
 import br.com.ccs.msconsumidor.constants.MsConsumidorConstants.MsProdutor;
 import br.com.messagedispatcher.annotation.MessageListener;
 import br.com.messagedispatcher.annotation.Notification;
