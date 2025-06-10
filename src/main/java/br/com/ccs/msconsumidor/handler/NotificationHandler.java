@@ -1,6 +1,5 @@
 package br.com.ccs.msconsumidor.handler;
 
-import br.com.ccs.msconsumidor.constants.MsConsumidorConstants.MsProdutor;
 import br.com.messagedispatcher.annotation.MessageListener;
 import br.com.messagedispatcher.annotation.Notification;
 import br.com.messagedispatcher.publisher.MessagePublisher;
@@ -18,9 +17,9 @@ public class NotificationHandler {
     private final MessagePublisher publisher;
 
     @Notification
-    public void Sucesso(@Valid SucessoRecord payload) {
-        log.info("Método sendNotificationSucesso | Mensagem consumida: {}", payload);
-        publisher.sendNotification(MsProdutor.MS_PRODUTOR_RK, payload);
+    public void handleNotification(@Valid SucessoRecord payload) {
+        log.info("Processado em {}.handleNotification | Mensagem consumida: {}", getClass().getSimpleName(), payload);
+//        publisher.sendNotification(MsProdutor.MS_PRODUTOR_RK, payload);
     }
 
     @Notification
