@@ -13,11 +13,16 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
+//@Component
 @RequiredArgsConstructor
 public class EventMessageListener implements MessageDispatcherListener {
 
     private static final String QUEUE_NAME = "ms-consumidor.event.inbox";
+    private static final String EXCHANGE_NAME = "message.dispatcher.ex";
+    private static final String ERROR_HANDLER = "messageDispatcherErrorHandler";
+    private static final String TRUE = "true";
+    private static final String FALSE = "false";
+
     private final AnnotatedMessageRouter messageRouter;
 
     @Override
@@ -26,18 +31,19 @@ public class EventMessageListener implements MessageDispatcherListener {
             @QueueBinding(
                     value = @Queue(
                             value = QUEUE_NAME,
-                            durable = "true"),
+                            durable = TRUE,
+                            autoDelete = FALSE,
+                            exclusive = FALSE),
                     exchange = @Exchange(
-                            value = "message.dispatcher.ex",
+                            value = EXCHANGE_NAME,
                             type = ExchangeTypes.TOPIC,
-                            durable = "true",
-                            ignoreDeclarationExceptions = "true"
+                            ignoreDeclarationExceptions = TRUE
                     ),
-                    key = "ms-consumidor.event.inbox"
+                    key = QUEUE_NAME
             ),
             concurrency = "#{@messageDispatcherProperties.concurrency}",
-            returnExceptions = "false",
-            errorHandler = "messageDispatcherErrorHandler"
+            returnExceptions = FALSE,
+            errorHandler = ERROR_HANDLER
     )
     public Object onMessage(Message message) {
         log.info("Mensagem consumida pelo listener: {} message: {}", getClass().getSimpleName(), message);
