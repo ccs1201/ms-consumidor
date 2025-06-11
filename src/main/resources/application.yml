@@ -18,4 +18,4 @@ message:
         reply-timeout: 15000
         # returnExceptions: true
         username: guest
-        concurrency: 50-50
+        concurrency: 1-10
