@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: ms-consumidor
+    threads:
+        virtual:
+            enabled: false
+logging:
+    level:
+        root: info
+        br.com.messagedispatcher: debug
+        org.springframework.boot.autoconfigure: info
+message:
+    dispatcher:
+        mapped:
+            headers: x-api-key, x-flowId, x-traceId, x-no-exist
+        prefetch-count: 25
+        max-retry-attempts: 3
+        reply-timeout: 15000
+        # returnExceptions: true
+        username: guest
+        concurrency: 50-50
