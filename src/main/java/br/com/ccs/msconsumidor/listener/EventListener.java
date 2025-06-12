@@ -13,9 +13,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-//@Component
+@Component
 @RequiredArgsConstructor
-public class EventMessageListener implements MessageDispatcherListener {
+public class EventListener implements MessageDispatcherListener {
 
     private static final String QUEUE_NAME = "ms-consumidor.event.inbox";
     private static final String EXCHANGE_NAME = "message.dispatcher.ex";

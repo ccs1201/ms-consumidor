@@ -4,11 +4,17 @@ spring:
     threads:
         virtual:
             enabled: false
+    datasource:
+        username: sa
+        password: password
+        url: jdbc:h2:mem:ms-consumidor
+        driverClassName: org.h2.Driver
 logging:
     level:
         root: info
         br.com.messagedispatcher: debug
         org.springframework.boot.autoconfigure: info
+        sql: debug
 message:
     dispatcher:
         mapped:
