@@ -46,7 +46,9 @@ public class EntityEventListener implements MessageDispatcherListener {
             errorHandler = ERROR_HANDLER
     )
     public Object onMessage(Message message) {
-        log.info("Mensagem consumida pelo listener: {} message: {}", getClass().getSimpleName(), message);
+        if(log.isDebugEnabled()) {
+            log.debug("Mensagem consumida pelo listener: {} message: {}", getClass().getSimpleName(), message);
+        }
         return messageRouter.routeMessage(message);
     }
 }

@@ -25,3 +25,6 @@ message:
         # returnExceptions: true
         username: guest
         concurrency: 1-10
+        logging:
+            messagerouter:
+                logging-enable: true
