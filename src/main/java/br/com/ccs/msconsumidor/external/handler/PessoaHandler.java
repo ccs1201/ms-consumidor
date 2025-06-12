@@ -16,8 +16,8 @@ public class PessoaHandler {
 
     @Event
     public void handlePessoa(Pessoa pessoa) {
-       log.info("Pessoa recebida: " + pessoa.toString());
-       pessoaService.save(pessoa);
+        log.info("Pessoa recebida: {}", pessoa.toString());
+        pessoaService.save(pessoa);
 
     }
 }
