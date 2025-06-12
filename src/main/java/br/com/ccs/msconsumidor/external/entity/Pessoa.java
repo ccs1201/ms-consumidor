@@ -2,32 +2,23 @@ package br.com.ccs.msconsumidor.external.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 @Entity
-@Data
-@Builder
 @DynamicInsert
 @DynamicUpdate
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
 public class Pessoa {
     @Id
     private UUID id;
     private String nome;
-    private Boolean deleted = Boolean.FALSE;
-    @CreationTimestamp
+    private Boolean deleted;
     private OffsetDateTime creatAt;
-    @UpdateTimestamp
     private OffsetDateTime updateAt;
 }

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class EntityEventListener implements MessageDispatcherListener {
 
     private static final String QUEUE_NAME = "ms-consumidor-entity-events.inbox";
+    private static final String ROUTING_KEY = "ms-cadastros";
     private static final String EXCHANGE_NAME = "ms-cadastros.ex";
     private static final String ERROR_HANDLER = "messageDispatcherErrorHandler";
     private static final String TRUE = "true";
@@ -39,16 +40,13 @@ public class EntityEventListener implements MessageDispatcherListener {
                             type = ExchangeTypes.FANOUT,
                             ignoreDeclarationExceptions = TRUE
                     ),
-                    key = QUEUE_NAME
+                    key = ROUTING_KEY
             ),
             concurrency = "#{@messageDispatcherProperties.concurrency}",
             returnExceptions = FALSE,
             errorHandler = ERROR_HANDLER
     )
     public Object onMessage(Message message) {
-        if(log.isDebugEnabled()) {
-            log.debug("Mensagem consumida pelo listener: {} message: {}", getClass().getSimpleName(), message);
-        }
         return messageRouter.routeMessage(message);
     }
 }

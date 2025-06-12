@@ -46,7 +46,6 @@ public class EventListener implements MessageDispatcherListener {
             errorHandler = ERROR_HANDLER
     )
     public Object onMessage(Message message) {
-        log.info("Mensagem consumida pelo listener: {} message: {}", getClass().getSimpleName(), message);
         return messageRouter.routeMessage(message);
     }
 }

@@ -5,16 +5,24 @@ spring:
         virtual:
             enabled: false
     datasource:
-        username: sa
-        password: password
-        url: jdbc:h2:mem:ms-consumidor
-        driverClassName: org.h2.Driver
+        username: postgres
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/ms-consumidor
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
 logging:
     level:
         root: info
         br.com.messagedispatcher: debug
         org.springframework.boot.autoconfigure: info
-        sql: debug
+#        sql: debug
 message:
     dispatcher:
         mapped:
