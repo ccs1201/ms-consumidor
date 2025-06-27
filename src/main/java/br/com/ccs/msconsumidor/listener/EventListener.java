@@ -1,6 +1,6 @@
 package br.com.ccs.msconsumidor.listener;
 
-import br.com.messagedispatcher.MessageDispatcherListener;
+import br.com.messagedispatcher.listener.MessageDispatcherListener;
 import br.com.messagedispatcher.router.impl.AnnotatedMessageRouter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
